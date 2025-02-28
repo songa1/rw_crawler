@@ -1,13 +1,3 @@
-#Tasks
-# 1. Understand how each process works and how
-# 2. Understand how the code works
-# 3. Understand the libraries used
-# 4. Understand the functions used
-# 5. Add a function to check for visits and demographics of website users
-# 6. Add a function to check for the most visited websites
-# 7. Add a frontend to display results and logs in a web platform using Flask
-# 8. In the frontend, give users a search textarea and button to choose a URL they want and display the results including the demographics and statistics of that website.
-
 import requests
 from bs4 import BeautifulSoup
 import logging
