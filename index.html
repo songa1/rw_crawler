@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>.RW Search</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-size">
+        <h1 class="main-title">.RW Search</h1>
+        <form class="search-form">
+          <input type="text" class="search-input" placeholder="Search .RW" />
+          <input type="submit" value="Search" />
+        </form>
+        <p style="color: white">
+          Example: <a href="search.php?q=google">google.rw</a>
+        </p>
+      </div>
+    </div>
+    <div class="content-size">
+      <h2>Search Results</h2>
+      <p class="resultsCount"><span class="resultsCount"></span></p>
+      <ul class="results">
+        <!-- Search results -->
+      </ul>
+      <div style="margin-top: 30px">
+        <h2>All .RW Domains</h2>
+        <p class="count"><span class="domainCount"></span></p>
+        <ul class="allDomains">
+          <!-- All domains -->
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="./js/script.js"></script>
+</html>
