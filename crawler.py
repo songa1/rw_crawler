@@ -13,6 +13,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - [E
 
 SITES_FILE = "sites.json"
 STATE_FILE = "crawl_state.json"
+MAX_PENDING = 5000
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; MyCrawler/1.0)"}
 MAX_DEPTH = 2
 
@@ -83,13 +84,16 @@ async def crawl_page(session, url, rw_domains, visited_urls, urls_to_visit, dept
                 for link in soup.find_all("a", href=True):
                     absolute_url = urljoin(url, link["href"])
                     parsed_url = urlparse(absolute_url)
-                    
+
                     if parsed_url.netloc.endswith(".rw") and absolute_url not in rw_domains:
                         rw_domains.add(absolute_url)
                         logging.info(f"Found .rw domain: {absolute_url}")
 
                     if absolute_url.startswith("http") and absolute_url not in visited_urls:
-                        urls_to_visit.append((absolute_url, depth + 1))
+                        if len(urls_to_visit) < MAX_PENDING:
+                            urls_to_visit.append((absolute_url, depth + 1))
+                        else:
+                            logging.warning("Pending queue full, skipping new URLs.")
     
     except Exception as e:
         logging.error(f"Error fetching URL {url}: {e}")
@@ -105,6 +109,9 @@ async def crawl_web(seed_urls):
         while urls_to_visit:
             url, depth = urls_to_visit.pop(0)
             tasks.append(crawl_page(session, url, rw_domains, visited_urls, urls_to_visit, depth))
+
+            if len(urls_to_visit) > MAX_PENDING:
+                urls_to_visit = urls_to_visit[-MAX_PENDING:]
 
             if len(tasks) >= 10: 
                 await asyncio.gather(*tasks)
