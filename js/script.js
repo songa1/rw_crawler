@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     allDomains.innerHTML = "";
     domains.forEach((domain) => {
       const li = document.createElement("li");
-      li.innerHTML = `<a href="${domain}" target="_blank">${domain}</a>`;
+      li.innerHTML = `<a href="${domain}" target="_blank" style="word-wrap: break-word;">${domain}</a>`;
       allDomains.appendChild(li);
     });
   }
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     domainResults.innerHTML = "";
     domains.forEach((domain) => {
       const li = document.createElement("li");
-      li.innerHTML = `<a href="${domain}" target="_blank">${domain}</a>`;
+      li.innerHTML = `<a href="${domain}" target="_blank" style="word-wrap: break-word;">${domain}</a>`;
       domainResults.appendChild(li);
     });
   }
