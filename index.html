@@ -9,20 +9,24 @@
   <body>
     <div class="container">
       <div class="content-size">
-        <h1 class="main-title">.RW Search</h1>
+        <h1 class="main-title">Domain Search</h1>
         <form class="search-form">
-          <input type="text" class="search-input" placeholder="Search .RW" />
-          <input type="submit" value="Search" />
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Type a domain to search"
+          />
+          <input type="submit" id="searchButton" value="Search" />
         </form>
         <p style="color: white">
-          Example: <a href="search.php?q=google">google.rw</a>
+          Example: <a href="search.php?q=google">google.com</a>
         </p>
       </div>
     </div>
     <div class="content-size">
       <h2>Search Results</h2>
-      <p class="resultsCount"><span class="resultsCount"></span></p>
-      <ul class="results">
+      <ul class="results" id="searchResults">
         <!-- Search results -->
       </ul>
       <div style="margin-top: 30px">
@@ -35,4 +39,5 @@
     </div>
   </body>
   <script src="./js/script.js"></script>
+  <script src="./js/search.js"></script>
 </html>
